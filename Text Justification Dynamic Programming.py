@@ -59,7 +59,7 @@ def TextJustificationDynamicProgramming(Line,width):
     lines[lno-1]+='.'
     return lines
 
-def justified(text):
+def justified(text,width):
     para={}
     pno=0
     start=end=0
@@ -67,15 +67,16 @@ def justified(text):
         if text[it] == '.':
             line=text[start:it+1]
             start=it+1
-            para[pno]=TextJustificationDynamicProgramming(line,10)
+            para[pno]=TextJustificationDynamicProgramming(line,width)
             pno+=1
-    print "Justified Text:\n "
+    print "\nJustified Text:\n "
     for Key in para.keys():
         for key in para[Key].keys():
             print para[Key][key]
         print " "
 
 text=raw_input("Enter text:\n")
-justified(text)
+width=int(raw_input("Enter width: "))
+justified(text,width)
     
         
